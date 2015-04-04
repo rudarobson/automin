@@ -30,9 +30,8 @@ module.exports = function(grunt) {
 
 		// Configuration to be run (and then tested).
 		automin: {
-			options:
-			{
-					tmp:'.lalala'
+			options: {
+				tmp: '.automin-tmp'
 			},
 			test1: {
 				options: {
@@ -57,6 +56,14 @@ module.exports = function(grunt) {
 				files: {
 					'tmp/test3/replace-api-with-script-another-dir.html': ['test/fixtures/test3/replace-api-with-script-another-dir.html']
 				}
+			},
+			test4: {
+				options: {
+					root: 'test/fixtures/test4'
+				},
+				files: {
+					'tmp/test4/index.html': ['test/fixtures/test4/index.html']
+				}
 			}
 		},
 		// Unit tests.
@@ -75,6 +82,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin's task(s), then test the result.
 	grunt.registerTask('test', [
@@ -82,8 +90,10 @@ module.exports = function(grunt) {
 		'automin:test1',
 		'automin:test2',
 		'automin:test3',
+		'automin:test4',
 		'concat:automin',
 		'uglify:automin',
+		'cssmin:automin',
 		'clean:automin',
 		'nodeunit'
 	]);
