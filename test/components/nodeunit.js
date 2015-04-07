@@ -24,14 +24,22 @@ var fs = require('fs');
 */
 
 
-exports.buildBlock = {
+exports.components = {
 	setUp: function(done) {
 		// setup here if necessary
 		done();
 	},
 	'components': function(test) {
 		var config = require('../config.json').components;
-		test.expect(0);
+		test.expect(2);
+
+		var actual = grunt.file.read(config.tmp + '/test1/index.html');
+		var expected = grunt.file.read(config.expected + '/test1/index.html');
+		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+
+		actual = grunt.file.read(config.tmp + '/test2/index.html');
+		expected = grunt.file.read(config.expected + '/test2/index.html');
+		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
 
 		test.done();
 	},
