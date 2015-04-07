@@ -31,16 +31,15 @@ exports.components = {
 	},
 	'components': function(test) {
 		var config = require('../config.json').components;
-		test.expect(2);
 
-		var actual = grunt.file.read(config.tmp + '/test1/index.html');
-		var expected = grunt.file.read(config.expected + '/test1/index.html');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-		actual = grunt.file.read(config.tmp + '/test2/index.html');
-		expected = grunt.file.read(config.expected + '/test2/index.html');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
+		var actual;
+		var expected;
+		test.expect(3);
+		for (var i = 1; i <= 3; i++) {
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
+			test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+		}
 		test.done();
 	},
 };

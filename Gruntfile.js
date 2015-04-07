@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 		'jshint',
 		'clean:tmp',
 		'build-block-test',
-		'components',
+		'components-test',
 		'nodeunit'
 	]);
 

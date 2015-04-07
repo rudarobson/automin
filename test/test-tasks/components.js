@@ -1,28 +1,24 @@
 module.exports = function(grunt) {
-	// Project configuration.
+	var tests = {};
+	var tasks = [];
+	for (var i = 1; i <= 3; i++) {
+		var testName = 'test' + i;
+		tests[testName] = {
+			options: {
+				componentsPath: '<%= config.components.src %>/' + testName + '/components'
+			},
+			files: {}
+		};
+
+		tests[testName].files['<%= config.components.tmp %>/' + testName + '/index.html'] = ['<%= config.components.src %>/' + testName + '/index.html'];
+
+		tasks.push('components:' + testName);
+	}
+
 	grunt.config.merge({
 		// Configuration to be run (and then tested).
-		'components': {
-			test1: {
-				options: {
-					componentsPath: '<%= config.components.src %>/test1/components'
-				},
-				files: {
-					'<%= config.components.tmp %>/test1/index.html': ['<%= config.components.src %>/test1/index.html']
-				}
-			},
-			test2: {
-				options: {
-					componentsPath: '<%= config.components.src %>/test2/components'
-				},
-				files: {
-					'<%= config.components.tmp %>/test2/index.html': ['<%= config.components.src %>/test2/index.html']
-				}
-			}
-		}
+		'components': tests
 	});
 
-	grunt.registerTask('components-test', [
-		'build-block:test1'
-	]);
+	grunt.registerTask('components-test', tasks);
 };
