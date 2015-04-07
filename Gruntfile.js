@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 	grunt.loadTasks('test/test-tasks');
 	grunt.registerTask('default', [
 		'jshint',
-		'clean',
+		'clean:tmp',
 		'build-block-test',
 		'components',
 		'nodeunit'

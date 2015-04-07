@@ -2,6 +2,9 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.config.merge({
 		// Configuration to be run (and then tested).
+		clean:{
+			'build-block':['.automin-tmp']
+		},
 		'build-block': {
 			options: {
 				tmp: '.automin-tmp'
@@ -57,7 +60,7 @@ module.exports = function(grunt) {
 		'build-block:test4',
 		'concat:automin',
 		'uglify:automin',
-		'cssmin:automin'
-		//'clean:automin'
+		'cssmin:automin',
+		'clean:build-block'
 	]);
 };
