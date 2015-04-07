@@ -1,0 +1,12 @@
+{
+	"buildBlock": {
+		"src": "test/build-block/tests",
+		"tmp": "tmp/build-block",
+		"expected": "test/build-block/expected"
+	},
+	"components": {
+		"src": "test/components/tests",
+		"tmp": "tmp/components",
+		"expected": "test/components/expected"
+	}
+}

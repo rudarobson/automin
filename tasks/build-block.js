@@ -1,6 +1,6 @@
 /*
  * automin
- * https://github.com/Rudá/automin
+ * https://github.com/rudarobson/automin
  *
  * Copyright (c) 2015 rudarobson
  * Licensed under the MIT license.
@@ -10,19 +10,21 @@
 
 var fs = require('fs');
 var path = require('path');
+
+function buildBlock(ctx) {
+	var api = require('../lib/build-block');
+	var trans = api.transform(ctx);
+	trans.process();
+	ctx.grunt.file.write(trans.context().destFull, trans.toString());
+}
+
 module.exports = function(grunt) {
-
-	// Please see the Grunt documentation for more information regarding task
-	// creation: http://gruntjs.com/creating-tasks
-
-	grunt.registerMultiTask('automin', 'The best Grunt plugin ever.', function() {
-		var api = require('../lib/automin-api');
-
+	grunt.registerMultiTask('build-block', 'The best Grunt plugin ever.', function() {
 		var self = this;
 		// Iterate over all specified file groups.
 		this.files.forEach(function(f) {
 			f.src.forEach(function(file) {
-				var trans = api.transform({
+				var ctx = {
 					grunt: grunt,
 					task: self,
 					srcDir: path.dirname(file),
@@ -31,11 +33,8 @@ module.exports = function(grunt) {
 					destDir: path.dirname(f.dest),
 					destFile: path.basename(f.dest),
 					destFull: f.dest
-				});
-
-				trans.process();
-
-				grunt.file.write(trans.context().destFull, trans.toString());
+				};
+				buildBlock(ctx);
 			});
 		});
 

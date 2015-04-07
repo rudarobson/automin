@@ -23,24 +23,25 @@ var fs = require('fs');
     test.ifError(value)
 */
 
-exports.automin = {
+
+exports.buildBlock = {
 	setUp: function(done) {
 		// setup here if necessary
 		done();
 	},
-	replace_api: function(test) {
+	'build-block': function(test) {
+		var config = require('../config.json').buildBlock;
 		test.expect(3);
-
-		var actual = grunt.file.read('tmp/test1/replace-api.html');
-		var expected = grunt.file.read('test/expected/test1/replace-api.html');
+		var actual = grunt.file.read(config.tmp + '/test1/replace-api.html');
+		var expected = grunt.file.read(config.expected + '/test1/replace-api.html');
 		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
 
-		actual = grunt.file.read('tmp/test2/subdir/replace-api.html');
-		expected = grunt.file.read('test/expected/test2/subdir/replace-api.html');
+		actual = grunt.file.read(config.tmp + '/test2/subdir/replace-api.html');
+		expected = grunt.file.read(config.expected + '/test2/subdir/replace-api.html');
 		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
 
-		actual = grunt.file.read('tmp/test3/replace-api-with-script-another-dir.html');
-		expected = grunt.file.read('test/expected/test3/replace-api-with-script-another-dir.html');
+		actual = grunt.file.read(config.tmp + '/test3/replace-api-with-script-another-dir.html');
+		expected = grunt.file.read(config.expected + '/test3/replace-api-with-script-another-dir.html');
 		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
 
 		test.done();
