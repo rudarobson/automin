@@ -1,7 +1,7 @@
 {
   "name": "automin",
   "description": "The best Grunt plugin ever.",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "homepage": "https://github.com/rudarobson/automin",
   "author": {
     "name": "Rudá Robson",
@@ -32,5 +32,8 @@
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  }
 }
