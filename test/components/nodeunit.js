@@ -30,15 +30,26 @@ exports.components = {
 		done();
 	},
 	'components': function(test) {
+		var descriptions = {
+			test1: 'a simple test with one custom tag',
+			test2: 'a more complex test with one custom tag',
+			test3: 'one custom tag testing attribute merging',
+			test4: 'testing attribute merging with nested custom tags',
+			test5: 'testing multiple uses of tag with nesting',
+			test6: 'testing alias same tag with different alias and multiple tags',
+			test7: 'testing directory importing',
+			test8: 'testing default directry importing'
+
+		};
 		var config = require('../config.json').components;
 
 		var actual;
 		var expected;
-		test.expect(6);
-		for (var i = 1; i <= 6; i++) {
+		test.expect(8);
+		for (var i = 1; i <= 8; i++) {
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
-			test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+			test.equal(actual, expected, descriptions['test' + i]);
 		}
 		test.done();
 	},
