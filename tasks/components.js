@@ -10,17 +10,22 @@
 
 var fs = require('fs');
 var path = require('path');
+var api = require('../lib/components');
 
 function components(ctx) {
-	var api = require('../lib/components');
+
 	var newFile = api.parse(ctx);
-	
+
 	ctx.grunt.file.write(ctx.destFull, newFile);
 }
 
 module.exports = function(grunt) {
 	grunt.registerMultiTask('components', 'The best Grunt plugin ever.', function() {
 		var self = this;
+
+		var defs = this.options();
+		api.mergeDefaults(defs);
+
 		// Iterate over all specified file groups.
 		this.files.forEach(function(f) {
 			f.src.forEach(function(file) {
@@ -37,7 +42,5 @@ module.exports = function(grunt) {
 				components(ctx);
 			});
 		});
-
-
 	});
 };

@@ -34,8 +34,8 @@ exports.components = {
 
 		var actual;
 		var expected;
-		test.expect(5);
-		for (var i = 1; i <= 5; i++) {
+		test.expect(6);
+		for (var i = 1; i <= 6; i++) {
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
 			test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
