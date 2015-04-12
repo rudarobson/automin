@@ -43,6 +43,7 @@ module.exports = function(grunt) {
 		'clean:tmp',
 		'build-block-test',
 		'components-test',
+		'handlebars-test',
 		'nodeunit'
 	]);
 

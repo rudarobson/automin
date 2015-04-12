@@ -8,5 +8,10 @@
 		"src": "test/components/tests",
 		"tmp": "tmp/components",
 		"expected": "test/components/expected"
+	},
+	"handlebars": {
+		"src": "test/handlebars/tests",
+		"tmp": "tmp/handlebars",
+		"expected": "test/handlebars/expected"
 	}
 }
