@@ -31,19 +31,23 @@ exports.buildBlock = {
 	},
 	'build-block': function(test) {
 		var config = require('../config.json').buildBlock;
+
+		var descriptions = {
+			test1: '',
+			test2: '',
+			test3: '',
+			test4: '',
+			test5: ''
+		};
+
+		var actual;
+		var expected;
 		test.expect(3);
-		var actual = grunt.file.read(config.tmp + '/test1/replace-api.html');
-		var expected = grunt.file.read(config.expected + '/test1/replace-api.html');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-		actual = grunt.file.read(config.tmp + '/test2/subdir/replace-api.html');
-		expected = grunt.file.read(config.expected + '/test2/subdir/replace-api.html');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-		actual = grunt.file.read(config.tmp + '/test3/replace-api-with-script-another-dir.html');
-		expected = grunt.file.read(config.expected + '/test3/replace-api-with-script-another-dir.html');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
+		for (var i = 1; i <= 3; i++) {
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
+			test.equal(actual, expected, descriptions['test' + i]);
+		}
 		test.done();
-	},
+	}
 };

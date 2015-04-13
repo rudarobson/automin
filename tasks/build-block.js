@@ -11,11 +11,10 @@
 var fs = require('fs');
 var path = require('path');
 
-function buildBlock(ctx) {
+function buildBlock(grunt,src,dest,options) {
 	var api = require('../lib/build-block');
-	var trans = api.transform(ctx);
-	trans.process();
-	ctx.grunt.file.write(trans.context().destFull, trans.toString());
+	var content = api.parse(src,dest,options);
+	grunt.file.write(dest, content);
 }
 
 module.exports = function(grunt) {
@@ -23,6 +22,7 @@ module.exports = function(grunt) {
 		var self = this;
 		// Iterate over all specified file groups.
 		this.files.forEach(function(f) {
+
 			f.src.forEach(function(file) {
 				var ctx = {
 					grunt: grunt,
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 					destFile: path.basename(f.dest),
 					destFull: f.dest
 				};
-				buildBlock(ctx);
+				buildBlock(grunt,file,f.dest,self.options());
 			});
 		});
 

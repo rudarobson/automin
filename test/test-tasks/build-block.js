@@ -1,66 +1,44 @@
 module.exports = function(grunt) {
 	// Project configuration.
-	grunt.config.merge({
-		// Configuration to be run (and then tested).
-		clean:{
-			'build-block':['.automin-tmp']
+	var tests = {
+		options: {
+			tmp: '.automin-tmp'
 		},
-		'build-block': {
+	};
+
+	var tasks = [];
+	for (var i = 1; i <= 5; i++) {
+		var testName = 'test' + i;
+		tests[testName] = {
 			options: {
-				tmp: '.automin-tmp'
+				root: '<%= config.buildBlock.src %>/' + testName
 			},
-			test1: {
-				options: {
-					root: '<%= config.buildBlock.src %>/test1'
-				},
-				files: {
-					'<%= config.buildBlock.tmp %>/test1/replace-api.html': ['<%= config.buildBlock.src %>/test1/replace-api.html']
-				}
-			},
-			test2: {
-				options: {
-					root: '<%= config.buildBlock.src %>/test2'
-				},
-				files: {
-					'<%= config.buildBlock.tmp %>/test2/subdir/replace-api.html': ['<%= config.buildBlock.src %>/test2/subdir/replace-api.html'],
-				}
-			},
-			test3: {
-				options: {
-					root: '<%= config.buildBlock.src %>/test3'
-				},
-				files: {
-					'<%= config.buildBlock.tmp %>/test3/replace-api-with-script-another-dir.html': ['<%= config.buildBlock.src %>/test3/replace-api-with-script-another-dir.html']
-				}
-			},
-			test4: {
-				options: {
-					root: '<%= config.buildBlock.src %>/test4'
-				},
-				files: {
-					'<%= config.buildBlock.tmp %>/test4/index.html': ['<%= config.buildBlock.src %>/test4/index.html']
-				}
-			}
+			files: {}
+		};
+
+		tests[testName].files['<%= config.buildBlock.tmp %>/' + testName + '/index.html'] = ['<%= config.buildBlock.src %>/' + testName + '/index.html'];
+
+		tasks.push('build-block:' + testName);
+	}
+
+	tests.test2.files['<%= config.buildBlock.tmp %>/test2/index.html'] = ['<%= config.buildBlock.src %>/test2/subdir/index.html'];
+
+	grunt.config.merge({
+		'build-block': tests,
+		clean: {
+			'build-block': ['.automin-tmp']
 		}
 	});
 
-
+	tasks.push('concat:automin');
+	tasks.push('uglify:automin');
+	tasks.push('cssmin:automin');
+	tasks.push('clean:build-block');
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-
-
-	grunt.registerTask('build-block-test', [
-		'build-block:test1',
-		'build-block:test2',
-		'build-block:test3',
-		'build-block:test4',
-		'concat:automin',
-		'uglify:automin',
-		'cssmin:automin',
-		'clean:build-block'
-	]);
+	grunt.registerTask('build-block-test', tasks);
 };
