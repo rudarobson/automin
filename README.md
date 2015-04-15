@@ -1,5 +1,5 @@
 # automin
-
+test
 > A Front end development plugin providing, templates, easy replacement of <script> <link> and static resources tags for deployment and debugging, a template engine similar to custom tags of web components (static generation of html using custom tags), and a lot more
 Fully Customizable.
 
