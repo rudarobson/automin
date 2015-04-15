@@ -1,6 +1,6 @@
 # automin
 
-> A Front end development plugin providing, templates, easy replacement of &lt; script &gt; &lt; link &gt; and static resources tags for deployment and debugging, a template engine similar to custom tags of web components (static generation of html using custom tags), and a lot more
+> A Front end development plugin providing, templates, easy replacement of <script <link and static resources tags for deployment and debugging, a template engine similar to custom tags of web components (static generation of html using custom tags), and a lot more
 Fully Customizable.
 
 ## Getting Started
@@ -74,10 +74,10 @@ ex:
 }
 ```
 ```html
-&lt;!-- build:js built_file.js --&gt;
-&lt;script...src="/file1.js"...&gt;
-&lt;script...src="/file2.js"...&gt;
-&lt;!-- /build --&gt;
+<!-- build:js built_file.js --
+<script...src="/file1.js"...
+<script...src="/file2.js"...
+<!-- /build --
 ```
 files would be  a/Root/Path/file1.js and a/RootPath/file2.s
 relative to the Gruntfile.js (path running the console)
@@ -94,10 +94,10 @@ A string value that is used as path for temporary files
 }
 ```
 ```html
-<!-- build:js built_file.js --\>
-<script...src="/file1.js"...\>
-<script...src="/file2.js"...\>
-<!-- /build --\>
+<!-- build:js built_file.js --
+<script...src="/file1.js"...
+<script...src="/file2.js"...
+<!-- /build --
 ```
 
 would generate
