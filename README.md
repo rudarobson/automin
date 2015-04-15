@@ -74,10 +74,10 @@ ex:
 }
 ```
 ```html
-<!-- build:js built_file.js -->
+&lt;!-- build:js built_file.js --&gt;
 &lt;script...src="/file1.js"...&gt;
 &lt;script...src="/file2.js"...&gt;
-<!-- /build -->
+&lt;!-- /build --&gt;
 ```
 files would be  a/Root/Path/file1.js and a/RootPath/file2.s
 relative to the Gruntfile.js (path running the console)
@@ -94,10 +94,10 @@ A string value that is used as path for temporary files
 }
 ```
 ```html
-<!-- build:js built_file.js -->
+&lt;!-- build:js built_file.js --&gt;
 &lt;script...src="/file1.js"...&gt;
 &lt;script...src="/file2.js"...&gt;
-<!-- /build -->
+&lt;!-- /build --&gt;
 ```
 
 would generate
