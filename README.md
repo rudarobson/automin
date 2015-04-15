@@ -94,10 +94,10 @@ A string value that is used as path for temporary files
 }
 ```
 ```html
-&lt;!-- build:js built_file.js --&gt;
-&lt;script...src="/file1.js"...&gt;
-&lt;script...src="/file2.js"...&gt;
-&lt;!-- /build --&gt;
+<!-- build:js built_file.js --\>
+<script...src="/file1.js"...\>
+<script...src="/file2.js"...\>
+<!-- /build --\>
 ```
 
 would generate
