@@ -1,6 +1,7 @@
 # automin
 
-> The best Grunt plugin ever.
+> A Front end development plugin providing, templates, easy replacement of <script> <link> and static resources tags for deployment and debugging, a template engine similar to custom tags of web components (static generation of html using custom tags), and a lot more
+Fully Customizable.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -17,14 +18,39 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('automin');
 ```
 
-## The "automin" task
-
+and load dependencies.
+```js
+grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-clean');
+```
+## The "build-block" task
+## Files used
+```
++-- Gruntfile.js
++-- src/
+|   +-- index.html
+|   +-- scripts/
+|   |   +-- file1.js
+|   |   +-- file2.js
++-- a/root/path
+|   +-- file1.js
+|   +-- file2.js
+```
 ### Overview
-In your project's Gruntfile, add a section named `automin` to the data object passed into `grunt.initConfig()`.
+build-block calculates the path relative to the current processing html, so a root option is needed.
+must run theses tasks with these targets
+```
+concat:automin
+uglify:automin
+cssmin:automin
+clean:build-block
+```
 
 ```js
 grunt.initConfig({
-  automin: {
+  'build-block': {
     options: {
       // Task-specific options go here.
     },
@@ -37,43 +63,64 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.root
 Type: `String`
-Default value: `',  '`
+Required: `true`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
+A string value that is used for search as the root in script,link, and other resource tags being built.
+ex:
+```js{
+    options: 'a/Root/Path'
+}
+```
+```html
+<!-- build:js built_file.js -->
+&lt;script...src="/file1.js"...&gt;
+&lt;script...src="/file2.js"...&gt;
+<!-- /build -->
+```
+files would be  a/Root/Path/file1.js and a/RootPath/file2.s
+relative to the Gruntfile.js (path running the console)
+#### options.tmp
 Type: `String`
-Default value: `'.'`
+Default value: `'.tmp'`
 
-A string value that is used to do something else with whatever else.
+A string value that is used as path for temporary files
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  automin: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
+```js{
+    options: 'a/Root/Path'
+}
+```
+```html
+<!-- build:js built_file.js -->
+&lt;script...src="/file1.js"...&gt;
+&lt;script...src="/file2.js"...&gt;
+<!-- /build -->
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+would generate
+
+```
++-- Gruntfile.js
++-- src/
+|   +-- index.html
++-- a/root/path
+|   +-- file1.js
+|   +-- file2.js
+```
+#### Default Options
+Html
+```html
+```
 
 ```js
 grunt.initConfig({
-  automin: {
+  'build-block': {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+        tmp:'.tmp',
+        root:'src'
     },
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
@@ -85,5 +132,7 @@ grunt.initConfig({
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-_(Nothing yet)_
+#License
+A custom license, read please ;).
+
+##Everything is undex development, including documentation, readme.md etc.
