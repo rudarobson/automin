@@ -1,0 +1,1 @@
+!function(){var a="hello there, testing here!";alert(a)}(),function(){var a="hello there, testing here!";alert(a)}();

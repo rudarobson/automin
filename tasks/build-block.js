@@ -12,7 +12,7 @@ var fs = require('fs');
 var path = require('path');
 
 function buildBlock(grunt,src,dest,options) {
-	var api = require('../lib/build-block');
+	var api = require('../lib/build-block/build-block');
 	var content = api.parse(src,dest,options);
 	grunt.file.write(dest, content);
 }

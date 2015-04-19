@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 	};
 
 	var tasks = [];
-	for (var i = 1; i <= 5; i++) {
+	for (var i = 1; i <= 6; i++) {
 		var testName = 'test' + i;
 		tests[testName] = {
 			options: {

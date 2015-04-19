@@ -33,19 +33,43 @@ exports.buildBlock = {
 		var config = require('../config.json').buildBlock;
 
 		var descriptions = {
-			test1: '',
-			test2: '',
-			test3: '',
-			test4: '',
-			test5: ''
+			test1: 'test1',
+			test2: 'test2',
+			test3: 'test3',
+			test4: 'test4',
+			test5: 'test5',
+			test6: 'test6'
 		};
 
 		var actual;
 		var expected;
-		test.expect(3);
-		for (var i = 1; i <= 3; i++) {
+		test.expect(11);
+
+		actual = grunt.file.read(config.tmp + '/test1/index.html');
+		expected = grunt.file.read(config.expected + '/test1/index.html');
+		test.equal(actual, expected, descriptions['test1']);
+
+		for (var i = 2; i <= 5; i++) {
+			//test html
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
+			test.equal(actual, expected, descriptions['test' + i]);
+
+			//test js
+			actual = grunt.file.read(config.tmp + '/test' + i + '/app.js');
+			expected = grunt.file.read(config.expected + '/test' + i + '/app.js');
+			test.equal(actual, expected, descriptions['test' + i]);
+		}
+
+		for (i = 6; i <= 6; i++) {
+			//test html
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
+			test.equal(actual, expected, descriptions['test' + i]);
+
+			//test css
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.css');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.css');
 			test.equal(actual, expected, descriptions['test' + i]);
 		}
 		test.done();
