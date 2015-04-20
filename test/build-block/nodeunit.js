@@ -38,12 +38,13 @@ exports.buildBlock = {
 			test3: 'test3',
 			test4: 'test4',
 			test5: 'test5',
-			test6: 'test6'
+			test6: 'test6',
+			test7: 'using build*cwd a diffrent search path for current document',
 		};
 
 		var actual;
 		var expected;
-		test.expect(11);
+		test.expect(13);
 
 		actual = grunt.file.read(config.tmp + '/test1/index.html');
 		expected = grunt.file.read(config.expected + '/test1/index.html');
@@ -61,7 +62,7 @@ exports.buildBlock = {
 			test.equal(actual, expected, descriptions['test' + i]);
 		}
 
-		for (i = 6; i <= 6; i++) {
+		for (i = 6; i <= 7; i++) {
 			//test html
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
