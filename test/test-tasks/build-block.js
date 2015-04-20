@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 	};
 
 	var tasks = [];
-	for (var i = 1; i <= 7; i++) {
+	for (var i = 1; i <= 8; i++) {
 		var testName = 'test' + i;
 		tests[testName] = {
 			options: {
@@ -33,12 +33,14 @@ module.exports = function(grunt) {
 	tasks.push('concat:automin');
 	tasks.push('uglify:automin');
 	tasks.push('cssmin:automin');
+	tasks.push('sass:automin');
 	tasks.push('clean:build-block');
+
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.registerTask('build-block-test', tasks);
 };

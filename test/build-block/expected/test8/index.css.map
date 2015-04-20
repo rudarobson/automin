@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,GAAI;EACH,gBAAgB,EAAE,IAAI;EACtB,QAAK;IACJ,gBAAgB,EAAE,IAAI;;AAIxB,IAAK;EACJ,gBAAgB,EAAE,IAAI;EACtB,WAAO;IACN,gBAAgB,EAAE,IAAI;IACtB,OAAO,EAbF,IAAI",
+"sources": ["../../../../../../../Rud%C3%A1/Documents/GitHub/automin/.automin-tmp/tmp/build-block/test8/index.css"],
+"names": [],
+"file": "index.css"
+}

@@ -44,14 +44,14 @@ exports.buildBlock = {
 
 		var actual;
 		var expected;
-		test.expect(13);
+		test.expect(15);
 
 		actual = grunt.file.read(config.tmp + '/test1/index.html');
 		expected = grunt.file.read(config.expected + '/test1/index.html');
 		test.equal(actual, expected, descriptions['test1']);
 
 		for (var i = 2; i <= 5; i++) {
-			//test html
+			//test js
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
 			test.equal(actual, expected, descriptions['test' + i]);
@@ -63,7 +63,19 @@ exports.buildBlock = {
 		}
 
 		for (i = 6; i <= 7; i++) {
-			//test html
+			//test css
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
+			test.equal(actual, expected, descriptions['test' + i]);
+
+			//test css
+			actual = grunt.file.read(config.tmp + '/test' + i + '/index.css');
+			expected = grunt.file.read(config.expected + '/test' + i + '/index.css');
+			test.equal(actual, expected, descriptions['test' + i]);
+		}
+
+		for (i = 8; i <= 8; i++) {
+			//test sass
 			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
 			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
 			test.equal(actual, expected, descriptions['test' + i]);
