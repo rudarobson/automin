@@ -50,40 +50,44 @@ exports.buildBlock = {
 		expected = grunt.file.read(config.expected + '/test1/index.html');
 		test.equal(actual, expected, descriptions['test1']);
 
-		for (var i = 2; i <= 5; i++) {
+		var js = [2,3,4,5];
+		var css = [6,7];
+		var sass = [8];
+
+		for (var i in js) {
 			//test js
-			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
-			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + js[i] + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + js[i] + '/index.html');
+			test.equal(actual, expected, descriptions['test' + js[i]]);
 
 			//test js
-			actual = grunt.file.read(config.tmp + '/test' + i + '/app.js');
-			expected = grunt.file.read(config.expected + '/test' + i + '/app.js');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + js[i] + '/app.js');
+			expected = grunt.file.read(config.expected + '/test' + js[i] + '/app.js');
+			test.equal(actual, expected, descriptions['test' + js[i]]);
 		}
 
-		for (i = 6; i <= 7; i++) {
+		for (i in css) {
 			//test css
-			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
-			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + css[i] + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + css[i] + '/index.html');
+			test.equal(actual, expected, descriptions['test' + css[i]]);
 
 			//test css
-			actual = grunt.file.read(config.tmp + '/test' + i + '/index.css');
-			expected = grunt.file.read(config.expected + '/test' + i + '/index.css');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + css[i] + '/index.css');
+			expected = grunt.file.read(config.expected + '/test' + css[i] + '/index.css');
+			test.equal(actual, expected, descriptions['test' + css[i]]);
 		}
 
-		for (i = 8; i <= 8; i++) {
+		for (i in sass) {
 			//test sass
-			actual = grunt.file.read(config.tmp + '/test' + i + '/index.html');
-			expected = grunt.file.read(config.expected + '/test' + i + '/index.html');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + sass[i] + '/index.html');
+			expected = grunt.file.read(config.expected + '/test' + sass[i] + '/index.html');
+			test.equal(actual, expected, descriptions['test' + sass[i]]);
 
 			//test css
-			actual = grunt.file.read(config.tmp + '/test' + i + '/index.css');
-			expected = grunt.file.read(config.expected + '/test' + i + '/index.css');
-			test.equal(actual, expected, descriptions['test' + i]);
+			actual = grunt.file.read(config.tmp + '/test' + sass[i] + '/index.css');
+			expected = grunt.file.read(config.expected + '/test' + sass[i] + '/index.css');
+			test.equal(actual, expected, descriptions['test' + sass[i]]);
 		}
 		test.done();
 	}

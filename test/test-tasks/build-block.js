@@ -30,10 +30,11 @@ module.exports = function(grunt) {
 		}
 	});
 
-	tasks.push('concat:automin');
+	tasks.push('build-block');
+	/*tasks.push('concat:automin');
 	tasks.push('uglify:automin');
 	tasks.push('cssmin:automin');
-	tasks.push('sass:automin');
+	tasks.push('sass:automin');*/
 	tasks.push('clean:build-block');
 
 
