@@ -47,7 +47,7 @@ exports.buildBlock = {
 
 		var actual;
 		var expected;
-		test.expect(19);
+		test.expect(21);
 
 		actual = grunt.file.read(config.tmp + '/test1/index.html');
 		expected = grunt.file.read(config.expected + '/test1/index.html');
@@ -55,7 +55,7 @@ exports.buildBlock = {
 
 		var js = [2, 3, 4, 5];
 		var css = [6, 7];
-		var sass = [8, 9, 10];
+		var sass = [8, 9, 10,11];
 
 		for (var i in js) {
 			//test js

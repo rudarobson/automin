@@ -7,11 +7,11 @@ module.exports = function(grunt) {
 	};
 
 	var tasks = [];
-	for (var i = 1; i <= 10; i++) {
+	for (var i = 1; i <= 11; i++) {
 		var testName = 'test' + i;
 		tests[testName] = {
 			options: {
-				root: '<%= config.buildBlock.src %>/' + testName
+				srcRoot: '<%= config.buildBlock.src %>/' + testName
 			},
 			files: {}
 		};
@@ -23,6 +23,7 @@ module.exports = function(grunt) {
 
 	tests.test2.files['<%= config.buildBlock.tmp %>/test2/index.html'] = ['<%= config.buildBlock.src %>/test2/subdir/index.html'];
 	tests.test10.options.types = ['sass']; //process only sass
+	tests.test11.options.dstRoot = '<%= config.buildBlock.tmp%>';//destination root
 	grunt.config.merge({
 		'build-block': tests,
 		clean: {
