@@ -55,7 +55,7 @@ exports.buildBlock = {
 
 		var js = [2, 3, 4, 5];
 		var css = [6, 7];
-		var sass = [8, 9, 10,11];
+		var sass = [8, 9, 10];
 
 		for (var i in js) {
 			//test js
@@ -92,6 +92,16 @@ exports.buildBlock = {
 			expected = grunt.file.read(config.expected + '/test' + sass[i] + '/index.css');
 			test.equal(actual, expected, descriptions['test' + sass[i]]);
 		}
+
+		//test sass
+		actual = grunt.file.read(config.tmp + '/test11/Home/index.html');
+		expected = grunt.file.read(config.expected + '/test11/Home/index.html');
+		test.equal(actual, expected, descriptions['test11']);
+
+		//test css
+		actual = grunt.file.read(config.tmp + '/test11/assets/css/index.css');
+		expected = grunt.file.read(config.expected + '/test11/assets/css/index.css');
+		test.equal(actual, expected, descriptions['test11']);
 		test.done();
 	}
 };
