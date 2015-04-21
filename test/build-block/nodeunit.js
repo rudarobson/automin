@@ -40,19 +40,22 @@ exports.buildBlock = {
 			test5: 'test5',
 			test6: 'test6',
 			test7: 'using build*cwd a diffrent search path for current document',
+			test8: 'testing sass',
+			test9: 'testing sass with imports',
+			test10: 'testing sass with other types but using types option as types:[sass], process only sass'
 		};
 
 		var actual;
 		var expected;
-		test.expect(15);
+		test.expect(19);
 
 		actual = grunt.file.read(config.tmp + '/test1/index.html');
 		expected = grunt.file.read(config.expected + '/test1/index.html');
 		test.equal(actual, expected, descriptions['test1']);
 
-		var js = [2,3,4,5];
-		var css = [6,7];
-		var sass = [8];
+		var js = [2, 3, 4, 5];
+		var css = [6, 7];
+		var sass = [8, 9, 10];
 
 		for (var i in js) {
 			//test js
